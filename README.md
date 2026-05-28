@@ -18,12 +18,57 @@ Queuing are the most frequently encountered problems in everyday life. For examp
 
 
 ## Experiment:
+<img width="889" height="549" alt="image" src="https://github.com/user-attachments/assets/24d61520-0a2a-4ea8-b3d1-fb5bc57cb6b8" />
 
 
-## Program
+
+## Program:
+```
+arr_time=float(input("Enterthe meaninterarrival timeof objects fromFeeder(insecs):"))
+ser_time1=float(input("Enterthe mean inter servicetimeof Lathe Machine1(in secs): "))
+ser_time2=float(input("Enterthe mean inter servicetimeof Lathe Machine2(in secs): "))
+ser_time3=float(input("Enterthe mean inter servicetimeof Lathe Machine3(in secs): "))
+Robot_time=float(input("EntertheAdditional timetakenfor theRobot(insecs): "))
+lam=1/arr_time
+mu1=1/(ser_time1+Robot_time)
+mu2=1/(ser_time2+Robot_time)
+mu3=1/(ser_time3+Robot_time)
+print("-----------------------------------------------------------------------")
+print("SeriesQueueswithinfinitecapacity-OpenJacksonNetwork")
+print("-----------------------------------------------------------------------")
+if(lam< mu1)and(lam< mu2) and(lam< mu3):
+Ls1=lam/(mu1-lam)
+Ls2=lam/(mu2-lam)
+Ls3=lam/(mu3-lam)
+Ls=Ls1+Ls2+Ls3
+Lq1=Ls1-lam/mu1
+Lq2=Ls2-lam/mu2
+Lq3=Ls3-lam/mu3
+Wq1=Lq1/lam
+Wq2=Lq2/lam
+Wq3=Lq3/lam
+Ws=Ls/(3*lam)
+print("Averagenumberofobjects inthe system S1:%0.2f"%Ls1)
+print("Averagenumberofobjects inthe system S2:%0.2f"%Ls2)
+print("Averagenumberofobjects inthe system S3:%0.2f"%Ls3)
+print("Averagenumberofobjects inthe overallsystem : %0.2f"%Ls)
+print("Averagenumberofobjects inthe conveyorS1 : %0.2f"%Lq1)
+print("Averagenumberofobjects inthe conveyorS2 : %0.2f"%Lq2)
+print("Averagenumberofobjects inthe conveyorS3 : %0.2f"%Lq3)
+print("Averagewaiting timeofan object intheconveyor S1: %0.2fsecs"%Wq1)
+print("Averagewaiting timeofan object intheconveyor S2: %0.2fsecs"%Wq2)
+print("Averagewaiting timeofan object intheconveyor S3: %0.2fsecs"%Wq3)
+else:
+print("Warning!ObjectsOver flowwillhappenintheconveyor")
+print("----------------------------------------------------------------------")
+```
 
 
 ## Output :
+<img width="669" height="394" alt="image" src="https://github.com/user-attachments/assets/e93cba3f-17a1-4042-ac39-1f38f20b8df5" />
+
 
 ## Result : 
+Thus, the program has been executed successfully and the required parameters have been calculated as per the given
+conditions
 
