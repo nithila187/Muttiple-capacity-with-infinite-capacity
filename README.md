@@ -18,54 +18,52 @@ Queuing are the most frequently encountered problems in everyday life. For examp
 
 
 ## Experiment:
-<img width="889" height="549" alt="image" src="https://github.com/user-attachments/assets/24d61520-0a2a-4ea8-b3d1-fb5bc57cb6b8" />
+<img width="777" height="850" alt="image" src="https://github.com/user-attachments/assets/0220b819-ba0c-4064-b7b5-ee9a3c792225" />
+
+
 
 
 
 ## Program:
 ```
+importmath
 arr_time=float(input("Enterthe meaninterarrival timeof objects fromFeeder(insecs):"))
-ser_time1=float(input("Enterthe mean inter servicetimeof Lathe Machine1(in secs): "))
-ser_time2=float(input("Enterthe mean inter servicetimeof Lathe Machine2(in secs): "))
-ser_time3=float(input("Enterthe mean inter servicetimeof Lathe Machine3(in secs): "))
+ser_time=float(input("Enterthe mean interservicetimeof LatheMachine(insecs): "))
 Robot_time=float(input("EntertheAdditional timetakenfor theRobot(insecs): "))
+c=int(input("Numberof servicecentre: "))
 lam=1/arr_time
-mu1=1/(ser_time1+Robot_time)
-mu2=1/(ser_time2+Robot_time)
-mu3=1/(ser_time3+Robot_time)
-print("-----------------------------------------------------------------------")
-print("SeriesQueueswithinfinitecapacity-OpenJacksonNetwork")
-print("-----------------------------------------------------------------------")
-if(lam< mu1)and(lam< mu2) and(lam< mu3):
-Ls1=lam/(mu1-lam)
-Ls2=lam/(mu2-lam)
-Ls3=lam/(mu3-lam)
-Ls=Ls1+Ls2+Ls3
-Lq1=Ls1-lam/mu1
-Lq2=Ls2-lam/mu2
-Lq3=Ls3-lam/mu3
-Wq1=Lq1/lam
-Wq2=Lq2/lam
-Wq3=Lq3/lam
-Ws=Ls/(3*lam)
-print("Averagenumberofobjects inthe system S1:%0.2f"%Ls1)
-print("Averagenumberofobjects inthe system S2:%0.2f"%Ls2)
-print("Averagenumberofobjects inthe system S3:%0.2f"%Ls3)
-print("Averagenumberofobjects inthe overallsystem : %0.2f"%Ls)
-print("Averagenumberofobjects inthe conveyorS1 : %0.2f"%Lq1)
-print("Averagenumberofobjects inthe conveyorS2 : %0.2f"%Lq2)
-print("Averagenumberofobjects inthe conveyorS3 : %0.2f"%Lq3)
-print("Averagewaiting timeofan object intheconveyor S1: %0.2fsecs"%Wq1)
-print("Averagewaiting timeofan object intheconveyor S2: %0.2fsecs"%Wq2)
-print("Averagewaiting timeofan object intheconveyor S3: %0.2fsecs"%Wq3)
+mu=1/(ser_time+Robot_time)
+print("--------------------------------------------------------------")
+print("MultipleServerwithInfinite Capacity-(M/M/c):(oo/FIFO)")
+print("--------------------------------------------------------------")
+print("Themeanarrival rateper second: %0.2f"%lam)
+print("Themeanservice rateper second: %0.2f"%mu)
+rho=lam/(c*mu)
+sum=(lam/mu)**c*(1/(1-rho))/math.factorial(c)
+fori inrange(0,c):
+sum=sum+(lam/mu)**i/math.factorial(i)
+P0=1/sum
+if(rho<1):
+Lq=(P0/math.factorial(c))*(1/c)*(lam/mu)**(c+1)/(1-rho)**2
+Ls=Lq+lam/mu
+Ws=Ls/lam
+Wq=Lq/lam
+print("Averagenumberofobjects inthe system :%0.2f"%Ls)
+print("Averagenumberofobjects inthe conveyor: %0.2f"%Lq)
+print("Averagewaiting timeofan object inthesystem: %0.2f secs"%Ws)
+print("Averagewaiting timeofan object intheconveyor :%0.2fsecs"%Wq)
+print("Probability thatthe system isbusy: %0.2f"%(rho))
+print("Probability thatthe system isempty: %0.2f"%(1-rho))
 else:
 print("Warning!ObjectsOver flowwillhappenintheconveyor")
-print("----------------------------------------------------------------------")
+print("--------------------------------------------------------------")
+
 ```
 
 
 ## Output :
-<img width="669" height="394" alt="image" src="https://github.com/user-attachments/assets/e93cba3f-17a1-4042-ac39-1f38f20b8df5" />
+<img width="586" height="342" alt="image" src="https://github.com/user-attachments/assets/bee81d33-c0e1-4f1f-bd39-9ef68f614bea" />
+
 
 
 ## Result : 
